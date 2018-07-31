@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryLightColor"
+    tools:context="williammordohay.moneyapp.Activities.LoginActivity">
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="270dp"
+        android:layout_height="320dp"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/shadow"
+        android:id="@+id/linearLayout"
+        android:elevation="20dp"
+        >
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/connection_title"
+            android:fontFamily="@font/aqua"
+            android:textSize="20dp"
+            android:gravity="center"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp">
+
+            <EditText
+                android:id="@+id/loginUsername"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/aqua"
+                android:textSize="14dp"
+                android:ems="10"
+                android:hint="@string/login"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/loginPassword"
+                android:fontFamily="@font/aqua"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textSize="14dp"
+                android:layout_marginTop="45dp"
+                android:ems="10"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:textSize="14dp"
+            android:fontFamily="@font/aqua"
+            android:background="@color/secondaryColor"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/connect" />
+
+        <Button
+            android:id="@+id/registerLinkButton"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:textSize="14dp"
+            android:fontFamily="@font/aqua"
+            android:background="@color/secondaryColor"
+            android:gravity="center"
+            android:text="@string/create_account_string" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/ic_launcher_foreground" />
+
+
+
+</RelativeLayout>

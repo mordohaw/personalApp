@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "259844636111",
+    "firebase_url": "https://moneyapp-7c53a.firebaseio.com",
+    "project_id": "moneyapp-7c53a",
+    "storage_bucket": "moneyapp-7c53a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259844636111:android:7287f31a60e3af04",
+        "android_client_info": {
+          "package_name": "williammordohay.moneyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259844636111-upmir97k0eeq2t6ar9uf2sjfklt5mpk3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "williammordohay.moneyapp",
+            "certificate_hash": "2ab9c15ba0a41b20309dcd385630cafc9ca3fe1f"
+          }
+        },
+        {
+          "client_id": "259844636111-3vgbq0s398j34oth39v2tqtkl54folfq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQGSMc-IJ289FTIipnZnylnR4eAnV7RZ0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259844636111-3vgbq0s398j34oth39v2tqtkl54folfq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
