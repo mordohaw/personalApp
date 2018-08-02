@@ -22,16 +22,14 @@
     <string name="heading_purchase">Achats</string>
     <string name="heading_my_purchase">Mes achats</string>
 
-    <!-- array supermarket -->
+    <!-- arcategoryrket -->
     <string-array name="supermarketList">
-        <item>Carrefour</item>
-        <item>Super U</item>
-        <item>Auchan</item>
-        <item>Marché</item>
-        <item>Intermarché</item>
-        <item>Casino</item>
-        <item>Lidle</item>
-        <item>Dia</item>
-        <item>Leclerc</item>
+        <item>Alimentation</item>
+        <item>Voiture</item>
+        <item>Animaux</item>
+        <item>Loisirs</item>
+        <item>Voyages</item>
+        <item>Cadeaux</item>
+        <item>Santé</item>
     </string-array>
 </resources>

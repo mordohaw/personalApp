@@ -1,6 +1,5 @@
 package williammordohay.moneyapp.Activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,7 +31,7 @@ public class NewPurchaseActivity extends BaseActivity {
     private DatabaseReference mDatabase;
 
     private EditText priceField;
-    private Spinner supermarketSpinner;
+    private Spinner categorySpinner;
     private Button submitButton;
 
 
@@ -45,7 +44,7 @@ public class NewPurchaseActivity extends BaseActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         priceField = findViewById(R.id.priceEditText);
-        supermarketSpinner = findViewById(R.id.supermarketSpinner);
+        categorySpinner = findViewById(R.id.categorySpinner);
         submitButton = findViewById(R.id.create_button);
         //onClickEffect
         effetAuClic(submitButton);
@@ -60,7 +59,7 @@ public class NewPurchaseActivity extends BaseActivity {
 
     private void submitPost() {
         final float price = Float.valueOf(priceField.getText().toString());
-        final String supermarket = supermarketSpinner.getSelectedItem().toString();
+        final String category = categorySpinner.getSelectedItem().toString();
 
         // Title is required
         if (TextUtils.isEmpty(Float.toString(price))) {
@@ -90,7 +89,7 @@ public class NewPurchaseActivity extends BaseActivity {
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             // Write new post
-                            writeNewPost(userId, user.username, price, supermarket);
+                            writeNewPost(userId, user.username, price, category);
                         }
 
                         // Finish this Activity, back to the stream
@@ -112,7 +111,7 @@ public class NewPurchaseActivity extends BaseActivity {
 
     private void setEditingEnabled(boolean enabled) {
         priceField.setEnabled(enabled);
-        supermarketSpinner.setEnabled(enabled);
+        categorySpinner.setEnabled(enabled);
         if (enabled) {
             submitButton.setVisibility(View.VISIBLE);
         } else {
@@ -121,11 +120,11 @@ public class NewPurchaseActivity extends BaseActivity {
     }
 
     // [START write_fan_out]
-    private void writeNewPost(String userId, String username, float price, String supermarket) {
+    private void writeNewPost(String userId, String username, float price, String category) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = mDatabase.child("posts").push().getKey();
-        Purchase post = new Purchase(userId, username, supermarket, price);
+        Purchase post = new Purchase(userId, username, category, price);
         Map<String, Object> postValues = post.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();

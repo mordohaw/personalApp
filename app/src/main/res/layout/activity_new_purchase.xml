@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryColor"
+    android:background="@color/colorPrimary"
     tools:context="williammordohay.moneyapp.Activities.NewPurchaseActivity">
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:gravity="center"/>
 
         <Spinner
-            android:id="@+id/supermarketSpinner"
+            android:id="@+id/categorySpinner"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"

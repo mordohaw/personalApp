@@ -25,7 +25,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         priceView = itemView.findViewById(R.id.cost);
         authorView = itemView.findViewById(R.id.post_author);
-        supermarketView = itemView.findViewById(R.id.supermarket);
+        supermarketView = itemView.findViewById(R.id.category);
         dateView = itemView.findViewById(R.id.buying_date);
     }
 
@@ -34,6 +34,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         priceView.setText(Float.toString(post.price));
         dateView.setText(post.buyDay+"/"+post.buyMonth);
         authorView.setText(post.author);
-        supermarketView.setText(post.supermarket);
+        supermarketView.setText(post.category);
     }
 }

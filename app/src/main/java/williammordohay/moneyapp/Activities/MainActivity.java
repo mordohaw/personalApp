@@ -33,7 +33,7 @@ import williammordohay.moneyapp.Fragments.PurchasePostsFragment;
 import williammordohay.moneyapp.Model.Purchase;
 import williammordohay.moneyapp.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static int NB_JOURS_MAX;
     private DatabaseReference mDatabase;
@@ -51,25 +51,9 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         totalField = (TextView) findViewById(R.id.totalTextView);
 
+        checkDate();
+        updateTotal();
 
-        if(!mDatabase.child("users").equals(null)){
-            mDatabase.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        Purchase purchase = snapshot.getValue(Purchase.class);
-                        total += purchase.price;
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-
-        totalField.setText(Float.toString(total));
 
         //clean data
         /*mDatabase.child("posts").setValue(null);
@@ -121,6 +105,64 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        updateTotal();
+    }
+
+    public void updateTotal(){
+        total=0;
+        if(!mDatabase.child("posts").equals(null)){
+            mDatabase.child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        Purchase purchase = snapshot.getValue(Purchase.class);
+                        total += purchase.price;
+                    }
+                    totalField.setText(Float.toString(total));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
+    private void checkDate(){
+        if(!mDatabase.child("posts").equals(null)){
+            mDatabase.child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        Purchase purchase = snapshot.getValue(Purchase.class);
+                        String currentPostKey = snapshot.getKey();
+                        if(purchase.buyMonth != getCurrentMonth()){
+                            Toast.makeText(MainActivity.this, "Le mois est terminé ! Vous avez dépensé un total de : "+ totalField.getText().toString()+" euros", Toast.LENGTH_LONG).show();
+                            mDatabase.child("posts").child(currentPostKey).setValue(null);
+                            mDatabase.child("user-posts").child(getUid()).child(currentPostKey).setValue(null);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
+    public int getCurrentMonth(){
+        Date currentDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+        int currentMonth = calendar.get(calendar.MONTH)+1;
+        return currentMonth;
+    }
     private void controlDate(){
         Date currentDate = new Date();
         Calendar calendar = Calendar.getInstance();

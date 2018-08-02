@@ -12,7 +12,7 @@ import java.util.Map;
  */
 
 public class Purchase {
-    public String supermarket, author, uid;
+    public String category, author, uid;
     public float price;
     public int buyMonth, buyDay;
 
@@ -20,9 +20,9 @@ public class Purchase {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Purchase(String uid, String author, String supermarket, float price) {
+    public Purchase(String uid, String author, String category, float price) {
         this.uid = uid;
-        this.supermarket = supermarket;
+        this.category = category;
         this.price = price;
         this.author = author;
 
@@ -42,7 +42,7 @@ public class Purchase {
         result.put("author", author);
         result.put("buyDay", buyDay);
         result.put("buyMonth", buyMonth);
-        result.put("supermarket", supermarket);
+        result.put("category", category);
         result.put("price", price);
 
         return result;
